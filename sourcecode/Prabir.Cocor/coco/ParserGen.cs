@@ -29,6 +29,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Text;
+using System.Reflection;
 
 namespace at.jku.ssw.Coco {
 
@@ -47,7 +48,7 @@ public class ParserGen {
 	
 	int errorNr;      // highest parser error number
 	Symbol curSy;     // symbol whose production is currently generated
-	FileStream fram;  // parser frame file
+	Stream fram;  // parser frame file
 	StreamWriter gen; // generated parser source file
 	StringWriter err; // generated parser error messages
 	ArrayList symSet = new ArrayList();
@@ -367,15 +368,35 @@ public class ParserGen {
 		int oldPos = buffer.Pos;  // Pos is modified by CopySourcePart
 		symSet.Add(tab.allSyncSets);
 		string fr = Path.Combine(tab.srcDir, "Parser.frame");
+        bool useEmbeddedResource = false;
 		if (!File.Exists(fr)) {
 			if (tab.frameDir != null) fr = Path.Combine(tab.frameDir.Trim(), "Parser.frame");
-			if (!File.Exists(fr)) throw new FatalError("Cannot find Parser.frame");
+			if (!File.Exists(fr))
+            {   // don't throw error rather use Embedded Resource." 
+                // throw new FatalError("Cannot find Parser.frame");
+                useEmbeddedResource = true;
+            }
 		}
-		try {
-			fram = new FileStream(fr, FileMode.Open, FileAccess.Read, FileShare.Read);
-		} catch (IOException) {
-			throw new FatalError("Cannot open Parser.frame.");
-		}
+        if (useEmbeddedResource)
+        {
+            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("Prabir.Cocor.coco.Parser.frame"))
+            {
+                byte[] buffe = new byte[s.Length];
+                MemoryStream ms = new MemoryStream();
+                s.Read(buffe, 0, buffe.Length);
+                ms.Write(buffe, 0, buffe.Length);
+                fram = ms;
+                fram.Position = 0;
+            }
+        }
+        else
+        {
+            try   {
+                fram = new FileStream(fr, FileMode.Open, FileAccess.Read, FileShare.Read);
+            } catch (IOException) {
+                throw new FatalError("Cannot open Parser.frame.");
+            }
+        }
 		OpenGen(true); /* pdt */
 		err = new StringWriter();
 		foreach (Symbol sym in tab.terminals) GenErrorMsg(tErr, sym);
