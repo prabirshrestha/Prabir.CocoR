@@ -29,6 +29,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Collections;
+using System.Reflection;
 
 namespace at.jku.ssw.Coco {
 
@@ -292,7 +293,7 @@ public class DFA {
 	private State firstState;
 	private State lastState;   // last allocated state
 	private int lastSimState;  // last non melted state
-	private FileStream fram;   // scanner frame input
+	private Stream fram;   // scanner frame input
 	private StreamWriter gen;  // generated scanner file
 	private Symbol curSy;      // current token to be recognized (in FindTrans)
 	private bool dirtyDFA;     // DFA may become nondeterministic in MatchLiteral
@@ -896,15 +897,35 @@ public class DFA {
 	public void WriteScanner() {
 		int i;
 		string fr = Path.Combine(tab.srcDir, "Scanner.frame");  /* pdt */
+        bool useEmbeddedResource = false;
 		if (!File.Exists(fr)) {
 			if (tab.frameDir != null) fr = Path.Combine(tab.frameDir.Trim(), "Scanner.frame");
-			if (!File.Exists(fr)) throw new FatalError("Cannot find Scanner.frame");
+            if (!File.Exists(fr))
+            {   // don't throw error rather use Embedded Resource."
+                // throw new FatalError("Cannot find Scanner.frame");
+                useEmbeddedResource = true;
+            }
 		}
-		try {
-			fram = new FileStream(fr, FileMode.Open, FileAccess.Read, FileShare.Read);
-		} catch (FileNotFoundException) {
-			throw new FatalError("Cannot open Scanner.frame.");
-		}
+        if (useEmbeddedResource)
+        {
+            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("Prabir.Cocor.coco.Scanner.frame"))
+            {
+                byte[] buffe = new byte[s.Length];
+                MemoryStream ms = new MemoryStream();
+                s.Read(buffe, 0, buffe.Length);
+                ms.Write(buffe, 0, buffe.Length);
+                fram = ms;
+                fram.Position = 0;
+            }
+        }
+        else
+        {
+            try {
+                fram = new FileStream(fr, FileMode.Open, FileAccess.Read, FileShare.Read);
+            } catch (FileNotFoundException) {
+                throw new FatalError("Cannot open Scanner.frame.");
+            }
+        }
 		OpenGen(true); /* pdt */
 		if (dirtyDFA) MakeDeterministic();
 		CopyFramePart("-->begin");
