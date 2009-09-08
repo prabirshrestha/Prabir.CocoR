@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A2D827EA-3DE7-4498-9A4D-07EB1A00E825}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -12,6 +12,8 @@
     <AssemblyName>Prabir.Cocor</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,7 +43,7 @@
     <Compile Include="coco\DFA.cs" />
     <Compile Include="coco\Parser.cs" />
     <Compile Include="coco\ParserGen.cs" />
-    <Compile Include="ErrorStream\CocorConsoleErrorStream.cs" />
+    <Compile Include="TextWriters\CocorConsoleTextWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="coco\Scanner.cs" />
     <Compile Include="coco\Tab.cs" />
@@ -49,6 +51,9 @@
   <ItemGroup>
     <EmbeddedResource Include="coco\Parser.frame" />
     <EmbeddedResource Include="coco\Scanner.frame" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
