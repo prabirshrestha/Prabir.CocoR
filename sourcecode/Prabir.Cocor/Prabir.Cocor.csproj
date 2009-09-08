@@ -39,7 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CocorGenerator.cs" />
-    <Compile Include="coco\Coco.cs" />
     <Compile Include="coco\DFA.cs" />
     <Compile Include="coco\Parser.cs" />
     <Compile Include="coco\ParserGen.cs" />
