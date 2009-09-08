@@ -36,7 +36,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="coco\Coco.cs" />
+    <Compile Include="coco\DFA.cs" />
+    <Compile Include="coco\Parser.cs" />
+    <Compile Include="coco\ParserGen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="coco\Scanner.cs" />
+    <Compile Include="coco\Tab.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
