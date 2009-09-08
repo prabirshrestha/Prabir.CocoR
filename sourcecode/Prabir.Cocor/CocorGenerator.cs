@@ -129,7 +129,7 @@ namespace Prabir.Cocor
             }
             else
             {
-                writer.WriteLine("Usage: Coco Grammar.ATG {{Option}}{0}" +
+                writer.WriteLine("Usage: cocor Grammar.ATG {{Option}}{0}" +
                                   "Options:{0}" +
                                   "  -namespace <namespaceName>{0}" +
                                   "  -frames    <frameFilesDirectory>{0}" +
@@ -145,7 +145,8 @@ namespace Prabir.Cocor
                                   "  S  list symbol table{0}" +
                                   "  X  list cross reference table{0}" +
                                   "Scanner.frame and Parser.frame files needed in ATG directory{0}" +
-                            "or in a directory specified in the -frames option.",
+                            "or in a directory specified in the -frames option, {0}"+
+                            "if not found default (embedded) scanner and parser frame files will be used.",
                                   Environment.NewLine);
             }
             return retVal;
