@@ -39,6 +39,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prabir.Cocor\Prabir.Cocor.csproj">
+      <Project>{A2D827EA-3DE7-4498-9A4D-07EB1A00E825}</Project>
+      <Name>Prabir.Cocor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
