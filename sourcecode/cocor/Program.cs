@@ -7,7 +7,7 @@ namespace Prabir.Cocor
         public static int Main(string[] arg)
         {
             return CocorGenerator.Generate(
-                CocorGenerator.CocorProvider.Original, Console.Out, arg);
+                CocorGenerator.CocorProvider.Prabir, Console.Out, arg);
         } 
     }
 } 

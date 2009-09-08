@@ -53,25 +53,26 @@ namespace Prabir.Cocor
             Original,
             Prabir
         }
+
         public static int Generate(CocorProvider provider, string[] arg)
         {
             return Generate(provider, Console.Out, arg);
         }
 
-        public static int Generate(CocorProvider provider,TextWriter writer, string[] arg)
+        public static int Generate(CocorProvider provider, TextWriter writer, string[] arg)
         {
             switch (provider)
             {
                 case CocorProvider.Original:
                     return GenerateOriginal(writer, arg);
                 case CocorProvider.Prabir:
-                    break;
+                    return GeneratePrabir(writer, arg);
             }
 
             return 0;
         }
 
-        private static int GenerateOriginal(TextWriter writer,string[] arg)
+        private static int GenerateOriginal(TextWriter writer, string[] arg)
         {
             writer.WriteLine("Coco/R (Jun 22, 2009) - Modified by Prabir Shrestha");
             writer.WriteLine("For more info please visit http://projects.prabir.me/compiler");
@@ -145,11 +146,144 @@ namespace Prabir.Cocor
                                   "  S  list symbol table{0}" +
                                   "  X  list cross reference table{0}" +
                                   "Scanner.frame and Parser.frame files needed in ATG directory{0}" +
-                            "or in a directory specified in the -frames option, {0}"+
+                            "or in a directory specified in the -frames option, {0}" +
                             "if not found default (embedded) scanner and parser frame files will be used.",
                                   Environment.NewLine);
             }
             return retVal;
+        }
+
+        private static int GeneratePrabir(TextWriter writer, string[] arg)
+        {
+            writer.WriteLine("Coco/R (Jun 22, 2009) - Modified by Prabir Shrestha");
+            writer.WriteLine("For more info please visit http://projects.prabir.me/compiler");
+            string srcName = null, nsName = null, frameDir = null, ddtString = null,
+            traceFileName = null, outDir = null;
+            int retVal = 1;
+            for (int i = 0; i < arg.Length; i++)
+            {
+                if (arg[i] == "-namespace" && i < arg.Length - 1) nsName = arg[++i];
+                else if (arg[i] == "-frames" && i < arg.Length - 1) frameDir = arg[++i];
+                else if (arg[i] == "-trace" && i < arg.Length - 1) ddtString = arg[++i];
+                else if (arg[i] == "-o" && i < arg.Length - 1) outDir = arg[++i];
+                else srcName = arg[i];
+            }
+            if (arg.Length > 0 && srcName != null)
+            {
+                try
+                {
+                    string srcDir = Path.GetDirectoryName(srcName);
+
+                    if (string.IsNullOrEmpty(nsName))
+                        nsName = GetNamespace(srcName, "");
+
+                    Scanner scanner = new Scanner(srcName);
+                    Parser parser = new Parser(scanner);
+
+                    traceFileName = Path.Combine(srcDir, "trace.txt");
+                    parser.trace = new StreamWriter(new FileStream(traceFileName, FileMode.Create));
+                    parser.tab = new Tab(parser);
+                    parser.dfa = new DFA(parser);
+                    parser.pgen = new ParserGen(parser);
+
+                    parser.tab.srcName = srcName;
+                    parser.tab.srcDir = srcDir;
+                    parser.tab.nsName = nsName;
+                    parser.tab.frameDir = frameDir;
+                    parser.tab.outDir = (outDir != null) ? outDir : srcDir;
+                    if (ddtString != null) parser.tab.SetDDT(ddtString);
+                    //parser.errors.errorStream = new CocorConsoleErrorStream();
+                    parser.errors.errorStream = writer;
+                    parser.Parse();
+
+                    parser.trace.Close();
+                    FileInfo f = new FileInfo(traceFileName);
+                    if (f.Length == 0) f.Delete();
+                    else writer.WriteLine("trace output is in " + traceFileName);
+                    writer.WriteLine("{0} errors detected", parser.errors.count);
+                    if (parser.errors.count == 0) { retVal = 0; }
+                }
+                catch (IOException)
+                {
+                    writer.WriteLine("-- could not open " + traceFileName);
+                }
+                catch (FatalError e)
+                {
+                    writer.WriteLine("-- " + e.Message);
+                }
+            }
+            else
+            {
+                writer.WriteLine("Usage: cocor Grammar.ATG {{Option}}{0}" +
+                                  "Options:{0}" +
+                                  "  -namespace <namespaceName>{0}" +
+                                  "  -frames    <frameFilesDirectory>{0}" +
+                                  "  -trace     <traceString>{0}" +
+                                  "  -o         <outputDirectory>{0}" +
+                                  "Valid characters in the trace string:{0}" +
+                                  "  A  trace automaton{0}" +
+                                  "  F  list first/follow sets{0}" +
+                                  "  G  print syntax graph{0}" +
+                                  "  I  trace computation of first sets{0}" +
+                                  "  J  list ANY and SYNC sets{0}" +
+                                  "  P  print statistics{0}" +
+                                  "  S  list symbol table{0}" +
+                                  "  X  list cross reference table{0}" +
+                                  "Scanner.frame and Parser.frame files needed in ATG directory{0}" +
+                            "or in a directory specified in the -frames option, {0}" +
+                            "if not found default (embedded) scanner and parser frame files will be used.{0}"+
+                            "You can also specificy the namespace in the grammar file by //namespace=Prabir.SampleNamespace{0}"+
+                            "This namespace must be specified at the first line.{0}"+
+                            "If -namespace argument is specified, it will override the namespace specified in grammar file.{0}",
+                            Environment.NewLine);
+            }
+            return retVal;
+        }
+
+        private static string GetNamespace(string srcName, string defaultNamespace)
+        {
+            // Check the file, if it contains namspace,
+            // return from the file rather than default namespace.
+            // Uses some hack. Not officialy supported by Coco.
+
+            /* Implementation Details
+             * 
+             * To use specific namespace, you must define it in .atg file
+             * by default it will use the defaultNamespace passed as parameter.
+             * To use custom namespace please use 
+             * // namespace = Prabir.SampleNamespace
+             * These comments must be in the first line of the grammar file (.atg) and
+             * should start with // style comment, comments starting with /* is not supported
+             * for custom namespace.
+             */
+            using (StreamReader reader = new StreamReader(srcName))
+            {
+                string line = reader.ReadLine().Trim();
+
+                if (line.StartsWith("//"))
+                {
+                    line = line.Substring(2).Trim(); // Remove // and spaces if it has.
+
+                    // Split into two parts by = sign.
+                    string[] param = line.Split('=');
+
+                    if (param.Length == 2)
+                    {
+                        if (param[0].Trim().ToLower() == "namespace")
+                        {
+                            defaultNamespace = param[1].Trim();
+
+                            // just check incase the user put ; which is quite a
+                            // common habit at least for me. :-)
+
+                            if (defaultNamespace.EndsWith(";"))
+                                defaultNamespace = defaultNamespace.Substring(0, defaultNamespace.Length - 1);
+                        }
+                    }
+                }
+
+                return defaultNamespace;
+            }
         }
     }
 }
