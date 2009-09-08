@@ -37,7 +37,7 @@ namespace at.jku.ssw.Coco {
 public class Parser {
 
     private string _parserCSFile = "Parser.cs";
-    public string ParserCSFile { get { return _parserCSFile; } internal set { _parserCSFile = value; } }
+    public string ParserCSFile { get { return _parserCSFile; } set { _parserCSFile = value; } }
 
 	public const int _EOF = 0;
 	public const int _ident = 1;

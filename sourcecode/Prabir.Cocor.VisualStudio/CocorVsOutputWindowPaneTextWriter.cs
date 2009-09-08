@@ -8,6 +8,9 @@ namespace Prabir.Cocor.VisualStudio
         readonly EnvDTE.OutputWindowPane _owp;
         readonly string _paneName;
 
+        public EnvDTE.OutputWindowPane OWP { get { return _owp; } }
+        public string PaneName { get { return _paneName; } }
+
         public CocorVsOutputWindowPaneTextWriter(EnvDTE.OutputWindowPane owp, string paneName)
         {
             _owp = owp;

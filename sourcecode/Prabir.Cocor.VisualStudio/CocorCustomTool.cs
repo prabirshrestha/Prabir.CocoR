@@ -4,57 +4,41 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using Prabir.VisualStudio.CustomTool;
 using System.IO;
-using Prabir.VisualStudio;
 
 namespace Prabir.Cocor.VisualStudio
 {
     [Guid("e6fc16fd-54b9-4165-bd0b-7d0edf6422bf")]
     [ComVisible(true)]
     [CustomTool("CocoR", "Prabir's Coco/R Addin For Visual Studio")]
-    public class CocorCustomTool : VsFileCustomToolGenerator
+    public class CocorCustomTool : VsFileGenerator
     {
         public override void Generate(string inputFilePath, string defaultNameSpace, out IVsFile primaryFile, out IList<IVsFile> secondaryFiles)
         {
-            CocorVsOutputWindowPaneTextWriter writer = new CocorVsOutputWindowPaneTextWriter(base.DTE, "Coco/R");
+            TextWriter writer = new CocorVsOutputWindowPaneTextWriter(base.DTE, "Coco/R");
 
             CocorGenerator.Generate(CocorGenerator.CocorProvider.Prabir, writer,
-                                    new string[] { inputFilePath });
-            primaryFile = null;
-            secondaryFiles = null;
-            //Coco coco = new Coco(InitializeOutputWindow(), inputFilePath, defaultNameSpace);
+                new string[] { inputFilePath });
 
-            //if (coco.Generate() == 0)
-            //    DTE.StatusBar.Text = "Parser and Scanner genereted successfully";
-            //else
-            //    DTE.StatusBar.Text = "Error(s) encountered while generating Parser and Scanner";
-
-            //DTE.StatusBar.Highlight(true);
+            DTE.StatusBar.Highlight(true);
 
             // Our Primary File is _____.Parser.cs and rest are secondaryFiles.
 
             string srcDir = Path.GetDirectoryName(inputFilePath);
-            string inputFileWithoutExtension = Path.GetFileNameWithoutExtension(inputFilePath);
-
-            string parserFile = Path.Combine(srcDir, inputFileWithoutExtension + ".Parser.cs");
-
-            string scannerFile = Path.Combine(srcDir, inputFileWithoutExtension + ".Scanner.cs");
 
             #region Add Files
-            //primaryFile = new VsFileTextGenerator(Path.Combine(srcDir, inputFileWithoutExtension + ".Parser.cs"));
 
-            //primaryFile = new VsFile(inputFilePath) { Extension = ".Parser.cs" };
+            primaryFile = new VsFileInclude(inputFilePath) { Extension = ".Parser.cs" };
 
-            //secondaryFiles = new List<IVsFile>();
-            //secondaryFiles.Add(new VsFile(inputFilePath) { Extension = ".Scanner.cs" });
-            //secondaryFiles.Add(new VsFile(inputFilePath) { Extension = ".Parser.cs.old" });
-            //secondaryFiles.Add(new VsFile(inputFilePath) { Extension = ".Scanner.cs.old" });
-            //secondaryFiles.Add(new VsFile(inputFilePath) { Extension = ".trace.txt" });
-            //secondaryFiles.Add(new VsFile(inputFilePath) { Extension = ".Parser.Frame" });
-            //secondaryFiles.Add(new VsFile(inputFilePath) { Extension = ".Scanner.Frame" });
+            secondaryFiles = new List<IVsFile>();
+            secondaryFiles.Add(new VsFileInclude(inputFilePath) { Extension = ".Scanner.cs" });
+            secondaryFiles.Add(new VsFileInclude(inputFilePath) { Extension = ".Parser.cs.old" });
+            secondaryFiles.Add(new VsFileInclude(inputFilePath) { Extension = ".Scanner.cs.old" });
+            secondaryFiles.Add(new VsFileInclude(inputFilePath) { Extension = ".trace.txt" });
+            secondaryFiles.Add(new VsFileInclude(inputFilePath) { Extension = ".Parser.Frame" });
+            secondaryFiles.Add(new VsFileInclude(inputFilePath) { Extension = ".Scanner.Frame" });
 
             #endregion
         }
-
 
         #region COM-Related Stuffs
 
