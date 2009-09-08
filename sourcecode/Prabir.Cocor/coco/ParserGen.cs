@@ -356,7 +356,7 @@ public class ParserGen {
 	
 	void OpenGen(bool backUp) { /* pdt */
 		try {
-			string fn = Path.Combine(tab.outDir, "Parser.cs"); /* pdt */
+			string fn = Path.Combine(tab.outDir, _parserCSFile ); /* pdt */
 			if (File.Exists(fn) && backUp) File.Copy(fn, fn + ".old", true);
 			gen = new StreamWriter(new FileStream(fn, FileMode.Create)); /* pdt */
 		} catch (IOException) {
@@ -437,6 +437,7 @@ public class ParserGen {
 		trace.WriteLine("{0} nodes", tab.nodes.Count);
 		trace.WriteLine("{0} sets", symSet.Count);
 	}
+    private string _parserCSFile;
 
 	public ParserGen (Parser parser) {
 		tab = parser.tab;
@@ -445,6 +446,7 @@ public class ParserGen {
 		buffer = parser.scanner.buffer;
 		errorNr = -1;
 		usingPos = null;
+        _parserCSFile = parser.ParserCSFile;
 	}
 
 } // end ParserGen

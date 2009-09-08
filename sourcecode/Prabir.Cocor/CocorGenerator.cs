@@ -180,6 +180,10 @@ namespace Prabir.Cocor
                     Scanner scanner = new Scanner(srcName);
                     Parser parser = new Parser(scanner);
 
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(srcName);
+                    scanner.ScannerCSFile = fileNameWithoutExtension + ".Scanner.cs";
+                    parser.ParserCSFile = fileNameWithoutExtension + ".Parser.cs";
+
                     traceFileName = Path.Combine(srcDir, "trace.txt");
                     parser.trace = new StreamWriter(new FileStream(traceFileName, FileMode.Create));
                     parser.tab = new Tab(parser);
@@ -231,9 +235,9 @@ namespace Prabir.Cocor
                                   "  X  list cross reference table{0}" +
                                   "Scanner.frame and Parser.frame files needed in ATG directory{0}" +
                             "or in a directory specified in the -frames option, {0}" +
-                            "if not found default (embedded) scanner and parser frame files will be used.{0}"+
-                            "You can also specificy the namespace in the grammar file by //namespace=Prabir.SampleNamespace{0}"+
-                            "This namespace must be specified at the first line.{0}"+
+                            "if not found default (embedded) scanner and parser frame files will be used.{0}" +
+                            "You can also specificy the namespace in the grammar file by //namespace=Prabir.SampleNamespace{0}" +
+                            "This namespace must be specified at the first line.{0}" +
                             "If -namespace argument is specified, it will override the namespace specified in grammar file.{0}",
                             Environment.NewLine);
             }

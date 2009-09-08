@@ -886,7 +886,7 @@ public class DFA {
 	
 	void OpenGen(bool backUp) { /* pdt */
 		try {
-			string fn = Path.Combine(tab.outDir, "Scanner.cs"); /* pdt */
+			string fn = Path.Combine(tab.outDir, parser.scanner.ScannerCSFile); /* pdt */
 			if (File.Exists(fn) && backUp) File.Copy(fn, fn + ".old", true);
 			gen = new StreamWriter(new FileStream(fn, FileMode.Create)); /* pdt */
 		} catch (IOException) {

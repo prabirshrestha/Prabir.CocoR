@@ -224,6 +224,10 @@ public class UTF8Buffer: Buffer {
 // Scanner
 //-----------------------------------------------------------------------------------
 public class Scanner {
+
+    private string _scannerCSFile = "Scanner.cs";
+    public string ScannerCSFile { get { return _scannerCSFile; } internal set { _scannerCSFile = value; } }
+
 	const char EOL = '\n';
 	const int eofSym = 0; /* pdt */
 	const int maxT = 41;
