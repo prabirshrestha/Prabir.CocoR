@@ -43,6 +43,7 @@ namespace Prabir.Cocor.VisualStudio
         #region COM-Related Stuffs
 
         internal static Guid CSharpCategoryGuid = new Guid("FAE04EC1-301F-11D3-BF4B-00C04F79EFBC");
+        private const string VisualStudioVersion2010 = "10.0";
         private const string VisualStudioVersion2008 = "9.0";
         // Version 2005,2003,2002 hasn't been tested yet.
         private const string VisualStudioVersion2005 = "8.0";
@@ -54,6 +55,20 @@ namespace Prabir.Cocor.VisualStudio
         {
             GuidAttribute guidAttribute = getGuidAttribute(t);
             CustomToolAttribute customToolAttribute = getCustomToolAttribute(t);
+
+            // For VS2010
+            using (RegistryKey key = Registry.LocalMachine.CreateSubKey(
+              GetKeyName2010(CSharpCategoryGuid, customToolAttribute.Name)))
+            {
+                key.SetValue("", customToolAttribute.Description);
+                key.SetValue("CLSID", "{" + guidAttribute.Value + "}");
+                key.SetValue("GeneratesDesignTimeSource", 1);
+            }
+            using (RegistryKey key = Registry.LocalMachine.CreateSubKey(
+                GetKeyName2010(CSharpCategoryGuid, ".atg")))
+            {
+                key.SetValue("", "CocoR");
+            }
 
             // For VS2008
             using (RegistryKey key = Registry.LocalMachine.CreateSubKey(
@@ -68,6 +83,7 @@ namespace Prabir.Cocor.VisualStudio
             {
                 key.SetValue("", "CocoR");
             }
+
             // For VS2008 Express
             using (RegistryKey key = Registry.LocalMachine.CreateSubKey(
               GetKeyName2008Express(CSharpCategoryGuid, customToolAttribute.Name)))
@@ -129,6 +145,12 @@ namespace Prabir.Cocor.VisualStudio
         public static void UnregisterClass(Type t)
         {
             CustomToolAttribute customToolAttribute = getCustomToolAttribute(t);
+
+            Registry.LocalMachine.DeleteSubKey(GetKeyName2010(
+              CSharpCategoryGuid, customToolAttribute.Name), false);
+            Registry.LocalMachine.DeleteSubKey(GetKeyName2010(
+              CSharpCategoryGuid, ".atg"), false);
+
             Registry.LocalMachine.DeleteSubKey(GetKeyName2008(
               CSharpCategoryGuid, customToolAttribute.Name), false);
             Registry.LocalMachine.DeleteSubKey(GetKeyName2008(
@@ -173,6 +195,13 @@ namespace Prabir.Cocor.VisualStudio
                   String.Format("Class '{0}' does not provide a '{1}' attribute.",
                   t.FullName, attributeType.FullName));
             return (Attribute)attributes[0];
+        }
+
+        internal static string GetKeyName2010(Guid categoryGuid, string toolName)
+        {
+            return
+              String.Format("SOFTWARE\\Microsoft\\VisualStudio\\" + VisualStudioVersion2010 +
+                "\\Generators\\{{{0}}}\\{1}\\", categoryGuid, toolName);
         }
 
         internal static string GetKeyName2008(Guid categoryGuid, string toolName)
