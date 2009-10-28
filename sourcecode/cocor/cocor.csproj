@@ -45,7 +45,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>..\..\tempbin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -92,7 +92,7 @@
   <PropertyGroup>
     <PostBuildEvent>cd $(SolutionDir)
 cd ..
-lib\ilmerge /target:exe /out:cocor.exe bin\pscocor.exe bin\Prabir.Cocor.dll</PostBuildEvent>
+lib\ilmerge /target:exe /out:dist\cocor.exe tempbin\pscocor.exe tempbin\Prabir.Cocor.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

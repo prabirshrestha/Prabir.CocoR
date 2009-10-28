@@ -47,7 +47,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>..\..\tempbin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -119,6 +119,6 @@
   <PropertyGroup>
     <PostBuildEvent>cd $(SolutionDir)
 cd ..
-lib\ilmerge /target:library /out:prabir.vscocor.dll /keyfile:prabir.vscocor.snk bin\Prabir.Cocor.VisualStudio.dll bin\Prabir.VisualStudio.CustomTool.dll bin\Prabir.Cocor.dll</PostBuildEvent>
+lib\ilmerge /target:library /out:dist\prabir.vscocor.dll /keyfile:prabir.vscocor.snk tempbin\Prabir.Cocor.VisualStudio.dll tempbin\Prabir.VisualStudio.CustomTool.dll tempbin\Prabir.Cocor.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
