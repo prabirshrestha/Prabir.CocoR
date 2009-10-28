@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prabir.Cocor", "Prabir.Cocor\Prabir.Cocor.csproj", "{A2D827EA-3DE7-4498-9A4D-07EB1A00E825}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocor", "cocor\cocor.csproj", "{FD64F4B6-BB0E-4B40-BFAE-EB1F384969F8}"
