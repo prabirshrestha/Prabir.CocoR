@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\Generators\{FAE04EC1-301F-11D3-BF4B-00C04F79EFBC}\CocoR]
+"CLSID"="{fc6e643b-f4a3-4c13-99f1-33f6be0ff31f}"
+"GeneratesDesignTimeSource"=dword:00000001
+@="Prabir's Coco/R Addin For Visual Studio"
