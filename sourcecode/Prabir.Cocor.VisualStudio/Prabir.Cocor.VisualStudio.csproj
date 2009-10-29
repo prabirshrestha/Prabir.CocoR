@@ -62,15 +62,10 @@
     <Reference Include="Prabir.VisualStudio.CustomTool, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Prabir.VisualStudio.CustomTool.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.VisualStudio.Shell, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Extensibility, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +112,6 @@
   <PropertyGroup>
     <PostBuildEvent>cd $(SolutionDir)
 cd ..
-lib\ilmerge /target:library /out:dist\prabir.vscocor.dll /keyfile:prabir.vscocor.snk tempbin\Prabir.Cocor.VisualStudio.dll tempbin\Prabir.VisualStudio.CustomTool.dll tempbin\Prabir.Cocor.dll</PostBuildEvent>
+lib\ilmerge /target:library /out:dist\prabir.vscocor.dll lib\Prabir.VisualStudio.CustomTool.dll tempbin\Prabir.Cocor.dll tempbin\Prabir.Cocor.VisualStudio.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
