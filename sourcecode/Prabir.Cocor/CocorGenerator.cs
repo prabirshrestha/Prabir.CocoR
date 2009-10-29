@@ -72,6 +72,19 @@ namespace Prabir.Cocor
             return 0;
         }
 
+        public static int Generate(CocorProvider provider, TextWriter writer, string[] arg, StreamWriter scannerWriter, StreamWriter parserWriter)
+        {
+            switch (provider)
+            {
+                case CocorProvider.Original:
+                    return GenerateOriginal(writer, arg);
+                case CocorProvider.Prabir:
+                    return GeneratePrabir(writer, arg);
+            }
+
+            return 0;
+        }
+
         private static int GenerateOriginal(TextWriter writer, string[] arg)
         {
             writer.WriteLine("Coco/R (Jun 22, 2009) - Modified by Prabir Shrestha");
@@ -289,5 +302,6 @@ namespace Prabir.Cocor
                 return defaultNamespace;
             }
         }
+
     }
 }

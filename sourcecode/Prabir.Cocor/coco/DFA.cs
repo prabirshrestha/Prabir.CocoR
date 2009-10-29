@@ -294,7 +294,7 @@ public class DFA {
 	private State lastState;   // last allocated state
 	private int lastSimState;  // last non melted state
 	private Stream fram;   // scanner frame input
-	private StreamWriter gen;  // generated scanner file
+    private StreamWriter gen;  // generated scanner file
 	private Symbol curSy;      // current token to be recognized (in FindTrans)
 	private bool dirtyDFA;     // DFA may become nondeterministic in MatchLiteral
 
