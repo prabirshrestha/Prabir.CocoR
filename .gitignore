@@ -1,7 +1,24 @@
-*.suo
+_ReSharper.*/
 
+# Visual Studio Ignores
 bin/
 obj/
-tempbin/
 
+*.suo
+*.user
+
+*.ncb
+
+# Resharper Ignores
 _ReSharper.*/
+*.resharper.user
+
+# vim Ignore
+*.swp
+
+# kdiff3 Ignore
+*.orig
+
+# Misc Ignores
+Thumbs.db
+
