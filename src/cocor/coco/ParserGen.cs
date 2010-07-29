@@ -379,7 +379,7 @@ public class ParserGen {
 		}
         if (useEmbeddedResource)
         {
-            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("cocor.coco.Parser.frame"))
+            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("Prabir.Cocor.coco.Parser.frame"))
             {
                 byte[] buffe = new byte[s.Length];
                 MemoryStream ms = new MemoryStream();
