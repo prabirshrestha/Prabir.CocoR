@@ -908,7 +908,7 @@ public class DFA {
 		}
         if (useEmbeddedResource)
         {
-            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("cocor.coco.Scanner.frame"))
+            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("Prabir.Cocor.coco.Scanner.frame"))
             {
                 byte[] buffe = new byte[s.Length];
                 MemoryStream ms = new MemoryStream();
