@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) Microsoft Corporation.  All rights reserved.
+    
+    The use and distribution terms for this software are covered by the
+    Common Public License 1.0 (http://opensource.org/licenses/cpl.php)
+    which can be found in the file CPL.TXT at the root of this distribution.
+    By using this software in any fashion, you are agreeing to be bound by
+    the terms of this license.
+    
+    You must not remove this notice, or any other, from this software.
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Property Id="VS2008" Value="1"/>
+    <Property Id="VS2008EXPRESS" Value="1"/>
+    <Property Id="VS2010" Value="1"/>
+    <Property Id="VS2010EXPRESS" Value="1"/>
+    <UI>
+      <Dialog Id="VisualStudioRegistrationDlg" Width="370" Height="270" Title="!(loc.CustomizeDlg_Title)" TrackDiskSpace="yes">
+        <Control Id="Back" Type="PushButton" X="192" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
+        <Control Id="Next" Type="PushButton" X="248" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)" />
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+        <Control Id="VS2008CheckBox" Type="CheckBox" X="30" Y="80" Width="170" Height="17" Property="VS2008" CheckBoxValue="1" Text="Visual Studio 2008"/>
+        <Control Id="VS2008ExpressCheckBox" Type="CheckBox" X="30" Y="100" Width="170" Height="17" Property="VS2008EXPRESS" CheckBoxValue="1" Text="Visual Studio 2008 (Express)"/>
+        <Control Id="VS2010CheckBox" Type="CheckBox" X="30" Y="120" Width="170" Height="17" Property="VS2010" CheckBoxValue="1"  Text="Visual Studio 2010"/>
+        <Control Id="VS2010ExpressCheckBox" Type="CheckBox" X="30" Y="140" Width="170" Height="17" Property="VS2010EXPRESS" CheckBoxValue="1"  Text="Visual Studio 2010 (Express)"/>
+
+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.CustomizeDlgBannerBitmap)" />
+        <Control Id="Text" Type="Text" X="25" Y="55" Width="320" Height="20" Text="Select the Visual Studio editions to integrate with." />
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="Visual Studio Integration" />
+        <Control Id="Title" Type="Text" X="15" Y="6" Width="210" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.CustomizeDlgTitle)" />
+
+      </Dialog>
+
+    </UI>
+    <!--<DirectoryRef Id="INSTALLLOCATION">
+      <Component Id="Component_CocorVisualStudio2010NotInstalled" Guid="4EB117D7-E750-4B20-8C15-5C7C355D17C8">
+        <Condition>VS2010=0</Condition>
+        <CreateFolder>
+        <RemoveRegistryKey Root="HKLM" Action="removeOnInstall"  Key="SOFTWARE\Microsoft\VisualStudio\10.0\Generators\{FAE04EC1-301F-11D3-BF4B-00C04F79EFBC}\CocoR"/>
+
+      </Component>
+    </DirectoryRef>-->
+
+
+
+
+  </Fragment>
+</Wix>

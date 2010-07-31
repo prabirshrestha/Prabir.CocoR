@@ -17,7 +17,7 @@
     <DefineConstants>Debug</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>..\..\bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -26,6 +26,41 @@
       <DependentUpon>Product.wxs</DependentUpon>
       <GenerateComponentGroups>True</GenerateComponentGroups>
     </Compile>
+    <Compile Include="ui\CustomizeDlg.wxs" />
+    <Compile Include="ui\VisualStudioRegistration.wxs" />
+    <Compile Include="ui\WixUI_Mondo.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>C:\Program Files (x86)\Windows Installer XML v3.5\bin\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ControlPanel.wxi" />
+    <Content Include="icon.ico" />
+    <Content Include="License.rtf" />
+    <Content Include="msi\bin\coco.exe" />
+    <Content Include="msi\bin\cocor.exe" />
+    <Content Include="msi\bin\cocor.pdb" />
+    <Content Include="msi\bin\Parser.frame" />
+    <Content Include="msi\bin\Prabir.Cocor.VisualStudio.dll" />
+    <Content Include="msi\bin\Scanner.frame" />
+    <Content Include="msi\docs\DataStructures.pdf" />
+    <Content Include="msi\docs\UserManual.pdf" />
+    <Content Include="msi\samples\CS2Parser.cs" />
+    <Content Include="msi\samples\CSharp.ATG" />
+    <Content Include="msi\samples\CSharp2.ATG" />
+    <Content Include="msi\samples\CSharp3.atg" />
+    <Content Include="msi\samples\CSParser.cs" />
+    <Content Include="msi\samples\Taste.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="msi" />
+    <Folder Include="msi\bin" />
+    <Folder Include="msi\docs" />
+    <Folder Include="msi\samples" />
+    <Folder Include="ui" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--

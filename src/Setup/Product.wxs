@@ -1,27 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="eb62defb-4aa4-453e-ba33-fff41320b501" Name="Setup" Language="1033" Version="1.0.0.0" Manufacturer="Setup" UpgradeCode="5a2ba2e3-3a8f-46a2-959b-1bcad29efe83">
-		<Package InstallerVersion="200" Compressed="yes" />
+  <Product
+        Id="1DC26809-8FB3-4935-A954-DD97113B021D"
+        Name="Prabir's Coco/R for C#"
+        Language="1033"
+        Codepage="1252"
+        Version="1.5"
+        Manufacturer="Prabir Shrestha"
+        UpgradeCode="9D60731A-891F-4BA3-9867-B74E78580030">
 
-		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+    <Package
+        Description="Prabir's Coco/R for C#"
+        Languages="1033"
+        SummaryCodepage="1252"
+        Platform="x86"
+        ReadOnly="no"
+        Compressed="yes"
+        AdminImage="no"
+        Keywords="installer,setup,coco,coco/r,visual studio"
+        ShortNames="no"
+        Manufacturer="Prabir Shrestha"/>
 
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLLOCATION" Name="Setup">
-					<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-					<!-- <Component Id="ProductComponent" Guid="5524a7ad-9b43-4f13-aeb6-731779d863f9"> -->
-						<!-- TODO: Insert files, registry keys, and other resources here. -->
-					<!-- </Component> -->
-				</Directory>
-			</Directory>
-		</Directory>
+    <Icon Id="CocoRIcon" SourceFile="icon.ico" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <WixVariable Id="Manufacturer" Value="Prabir Shrestha"/>
 
-		<Feature Id="ProductFeature" Title="Setup" Level="1">
-			<!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
-			<!-- <ComponentRef Id="ProductComponent" /> -->
-			
-			<!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
-			<ComponentGroupRef Id="Product.Generated" />
-		</Feature>
-	</Product>
+    <Media Id="1" Cabinet="data.cab" CompressionLevel="high" EmbedCab="yes" />
+
+    <?include ControlPanel.wxi ?>
+
+    <!--<Condition Message="64 bit windows not supported" >
+      VersionNT64
+    </Condition>-->
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" >
+        <Directory Id="ManufacturerFolder" Name="!(wix.Manufacturer)">
+          <Directory Id="INSTALLLOCATION" Name="CocoR">
+            <Component Id="Component_CocorVisualStudio2010"  Guid="7B4AB86F-348A-42E5-A0CA-0430E9C5BDBA">
+              <Condition>VS2010=1</Condition>
+              <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\10.0\Generators\{FAE04EC1-301F-11D3-BF4B-00C04F79EFBC}\CocoR" Action="createAndRemoveOnUninstall">
+                <RegistryValue Value="Prabir's Coco/R Addin For Visual Studio" Type="string" Action="write" />
+                <RegistryValue Name="CLSID" Value="{fc6e643b-f4a3-4c13-99f1-33f6be0ff31f}" Type="string" Action="write" />
+              </RegistryKey>
+            </Component>
+            <Directory Id="BinDir" Name="bin">
+              <Component Id="Component_PrabirCocorBin" Guid="986BFCD1-CEC2-4A42-9D10-E73114BDABB9">
+                <File Id="cocor.exe" Name="cocor.exe" DiskId="1" Source="msi\bin\cocor.exe" Checksum="yes"/>
+                <File Id="cocor.pdb" Name="cocor.pdb" DiskId="1" Source="msi\bin\cocor.pdb"/>
+              </Component>
+              <Component Id="Component_OriginalCocorBin" Guid="13E5C4E3-FAE0-42D8-8C6D-17E5167788DF">
+                <File Id="coco.exe" Name="coco.exe" DiskId="1" Source="msi\bin\coco.exe" Checksum="yes"/>
+              </Component>
+              <Component Id="Component_OriginalCocoRScannerFrame" Guid="EBB06094-6808-4904-B8C7-F2B88E4FE7B5">
+                <File Id="Scanner.frame" Name="Scanner.frame" DiskId="1" Source="msi\bin\Scanner.frame"/>
+              </Component>
+              <Component Id="Component_OriginalCocoRParserFrame" Guid="7238F48F-D4CF-4A1C-830B-A8CF30CC877F">
+                <File Id="Parser.frame" Name="Parser.frame" DiskId="1" Source="msi\bin\Parser.frame"/>
+              </Component>
+            </Directory>
+            <Directory Id="DocsDir" Name="docs">
+              <Component Id="Component_OriginalCocorDocs" Guid="1C8DD126-3065-499B-9D79-8A4296C9E05F">
+                <File Id="UserManual.pdf" Name="UserManual.pdf" DiskId="1" Source="msi\docs\UserManual.pdf"/>
+                <File Id="DataStructures.pdf" Name="DataStructures.pdf" DiskId="1" Source="msi\docs\DataStructures.pdf"/>
+              </Component>
+            </Directory>
+            <Directory Id="SamplesDir" Name="samples">
+              <Component Id="Component_Samples" Guid="A2C2344B-AE93-48F8-B9D7-A8A2EAD164BF">
+                <File Id="CS2Parser.cs" Name="CS2Parser.cs" DiskId="1" Source="msi\samples\CS2Parser.cs" />
+                <File Id="CSharp.ATG" Name="CSharp.ATG" DiskId="1" Source="msi\samples\CSharp.ATG" />
+                <File Id="CSharp2.ATG" Name="CSharp2.ATG" DiskId="1" Source="msi\samples\CSharp2.ATG" />
+                <File Id="CSharp3.atg" Name="CSharp3.atg" DiskId="1" Source="msi\samples\CSharp3.atg" />
+                <File Id="CSParser.cs" Name="CSParser.cs" DiskId="1" Source="msi\samples\CSParser.cs" />
+                <File Id="Taste.zip" Name="Taste.zip" DiskId="1" Source="msi\samples\Taste.zip" />
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="MainTree"
+        Title="Coco/R"
+        Description="Coco/R"
+        Level="1"
+        Display="expand"
+        ConfigurableDirectory="INSTALLLOCATION">
+
+      <Feature Id="CocoRFeature" AllowAdvertise="no"  Title="Prabir's Coco/R" Absent="allow"  Description="Coco/R" Level="1" Display="expand">
+        <Feature Absent="disallow"  AllowAdvertise="no" Id="CocoRExeFeature" Title="Binaries" Description="Prabir's Coco/R Binary" Level="1">
+          <ComponentRef Id="Component_PrabirCocorBin"/>
+        </Feature>
+      </Feature>
+
+      <Feature Id="OriginalCocoFeature" AllowAdvertise="no"  Title="Original Coco/R" Description="Original Coco/R" Level="1">
+        <Feature Id="OriginalCocoRExeFeature"  AllowAdvertise="no" Title="Binaries" Description="Original Coco/R Binary" Level="1">
+          <ComponentRef Id="Component_OriginalCocorBin"/>
+        </Feature>
+        <Feature Id="OriginalCocoRScannerFrame" AllowAdvertise="no" Title="Scanner Frame File" Level="1" Description="The frame file from which the scanner is generated">
+          <ComponentRef Id="Component_OriginalCocoRScannerFrame"/>
+        </Feature>
+        <Feature Id="OriginalCocoRParserFrame" AllowAdvertise="no" Title="Parser Frame File" Level="1" Description="The frame file from which the parser is generated">
+          <ComponentRef Id="Component_OriginalCocoRParserFrame"/>
+        </Feature>
+        <Feature Id="OriginalCocoRDocs" AllowAdvertise="no" Title="Docs" Level="1" Description="Coco/R language specification, user guide and description of the data structures in Coco/R">
+          <ComponentRef Id="Component_OriginalCocorDocs"/>
+        </Feature>
+      </Feature>
+
+      <Feature Id="Samples" AllowAdvertise="no" Title="Samples" Description="Coco/R Samples for C# grammars as well as sample Taste compiler" Level="1000">
+        <ComponentRef Id="Component_Samples" />
+      </Feature>
+      <Feature  Id="CocorVisualStudioFeature"  Display="hidden"  Absent="disallow"  AllowAdvertise="no" Title="Visual Studio Integration" Description="Integrate Visual Studio" Level="1000">
+        <ComponentRef  Id="Component_CocorVisualStudio2010"/>
+        <!--<ComponentRef Id="Component_CocorVisualStudio2010NotInstalled"/>-->
+      </Feature>
+
+    </Feature>
+
+    <CustomAction Id="SetREINSTALL" Property="REINSTALL" Value="CocorVisualStudioFeature" />
+
+    <InstallExecuteSequence>
+      <Custom Action="SetREINSTALL" Before="CostInitialize">
+        Installed AND NOT (REMOVE ~= "ALL")
+      </Custom>
+    </InstallExecuteSequence>
+
+    <UIRef Id="Cocor_WixUI_Mondo" />
+
+    <!--<Component Id="Component_VS2010Reg" Guid="7B4AB86F-348A-42E5-A0CA-0430E9C5BDBA" Directory="INSTALLLOCATION">
+      <Condition><![CDATA[VS2010=1]]></Condition>
+      <Registry Id="VS2008Reg" Root="HKLM" Key="OFTWARE\Microsoft\VisualStudio\10.0\Generators\{FAE04EC1-301F-11D3-BF4B-00C04F79EFBC}\CocoR"
+                       Action="write" Type="string" Value="{fc6e643b-f4a3-4c13-99f1-33f6be0ff31f}">
+      </Registry>
+    </Component>-->
+
+  </Product>
+
 </Wix>

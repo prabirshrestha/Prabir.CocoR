@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <Property Id="ARPHELPLINK" Value="http://www.prabir.me"/>
+  <Property Id="ARPCONTACT" Value="Prabir Shrestha" />
+  <Property Id="ARPCOMMENTS" Value="Coco/R for Visual Studio" />
+  <Property Id="ARPURLINFOABOUT" Value="http://www.prabir.me" />
+  <Property Id="ARPHELPTELEPHONE" Value="0066875098300" />
+
+  <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[INSTALLDIR]"/>
+  <Property Id='ARPPRODUCTICON'>CocoRIcon</Property>
+
+  <InstallExecuteSequence>
+    <Custom Action="SetARPINSTALLLOCATION" After="InstallValidate"></Custom>
+  </InstallExecuteSequence>
+</Include>
