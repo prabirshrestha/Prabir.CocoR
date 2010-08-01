@@ -26,6 +26,10 @@
 
 	void Cocor()
 	{
+
+		var owp = GetOutputWindowPane("Coco/R");
+		T4LogWriter logWriter = new T4LogWriter(this,owp);
+
 		string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
 		var files = Directory.GetFiles(templateDirectory);
 
@@ -37,7 +41,7 @@
 			if(ext.Equals(".atg", StringComparison.OrdinalIgnoreCase))
 				atgFiles.Add(atg);
 		}
-		
+
 		foreach(var atgFile in atgFiles)
 		{
 			var f = Path.GetFileNameWithoutExtension(atgFile);
@@ -50,20 +54,20 @@
 			if(File.Exists(parserFile))
 				File.Delete(parserFile);
 
-			Cocor(atgFile);
+			Cocor(atgFile, logWriter);
 		}
 	}
 
 	// coco/r specific methods
-	void Cocor(string file){
+	void Cocor(string file, T4LogWriter logWriter){
 		string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
         string filePath = Path.Combine(templateDirectory, file);
-
-		WriteLine("Processing file \"" + filePath+"\"");
-		WriteLine("cocor "+ Path.GetFileName(filePath));
-		WriteLine("Started at " + DateTime.Now );
-		WriteLine("------------------- Console Output ---------------------------");
-		CocorGenerator.Generate(CocorGenerator.CocorProvider.Prabir, new T4LogWriter(this,null), new[] {filePath});
+		
+		logWriter.WriteLine("Processing file \"" + filePath+"\"");
+		logWriter.WriteLine("cocor "+ Path.GetFileName(filePath));
+		logWriter.WriteLine("Started at " + DateTime.Now );
+		logWriter.WriteLine("------------------- Console Output ----------------------------");
+		CocorGenerator.Generate(CocorGenerator.CocorProvider.Prabir, logWriter, new[] {filePath});
 
 		string fileWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
 		
@@ -71,22 +75,23 @@
 		AttachFile(fileWithoutExtension+".Scanner.cs.old");
 		AttachFile(fileWithoutExtension+".Parser.cs");
 		AttachFile(fileWithoutExtension+".Parser.cs.old");
-		WriteLine("---------------- End of Console Output ------------------------");
-		WriteLine("Finsihed at " + DateTime.Now );
-		WriteLine("===============================================================");
-		WriteLine(string.Empty);
-		WriteLine(string.Empty);
+		
+		logWriter.WriteLine("---------------- End of Console Output ------------------------");
+		logWriter.WriteLine("Finsihed at " + DateTime.Now );
+		logWriter.WriteLine("===============================================================");
+		logWriter.WriteLine(string.Empty);
+		logWriter.WriteLine(string.Empty);
 	}
 
 	class T4LogWriter : TextWriter {
 
 		TextTransformation _tt;
-		IVsOutputWindowPane _vsOutputPane;
+		EnvDTE.OutputWindowPane _owp;
 
-		public T4LogWriter(TextTransformation tt, IVsOutputWindowPane outputPane)
+		public T4LogWriter(TextTransformation tt, EnvDTE.OutputWindowPane outputPane)
 		{
 			_tt = tt;
-			_vsOutputPane = outputPane;
+			_owp = outputPane;
 		}
 		
 		public override void WriteLine(string format, object arg0, object arg1, object arg2)
@@ -97,6 +102,8 @@
         public override void WriteLine(string value)
         {
 			_tt.WriteLine(value);
+			_owp.OutputString(value);
+			_owp.OutputString(Environment.NewLine);
         }
 		
 		public override System.Text.Encoding Encoding
@@ -236,5 +243,31 @@
         return vsProject;
     }
 
+
+	EnvDTE.OutputWindowPane GetOutputWindowPane(string paneName)
+	{
+		var dte = __getTemplateProjectItem().DTE;
+
+		EnvDTE.Window win = dte.Windows.Item(EnvDTE.Constants.vsWindowKindOutput);
+        EnvDTE.OutputWindow OW = (EnvDTE.OutputWindow)win.Object;
+
+		EnvDTE.OutputWindowPane OWp = null;
+
+            for (int i = 1; i <= OW.OutputWindowPanes.Count; i++)
+            {
+                if (OW.OutputWindowPanes.Item(i).Name == paneName)
+                {
+                    OWp = OW.OutputWindowPanes.Item(i);
+                    OWp.Clear();
+                }
+            }
+
+            if (OWp == null)
+                OWp = OW.OutputWindowPanes.Add(paneName);
+
+            // OWp.Activate();
+
+            return OWp;
+	}
 
 #>
