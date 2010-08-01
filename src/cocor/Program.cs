@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Prabir.Cocor
+﻿namespace Prabir.Cocor
 {
+    using System;
+
     class Program
     {
         static int Main(string[] args)
