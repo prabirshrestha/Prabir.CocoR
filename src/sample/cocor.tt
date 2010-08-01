@@ -16,6 +16,7 @@
 <#@ import namespace="Microsoft.VisualStudio.Shell.Interop" #>
 <#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
 <#@ import namespace="Prabir.Cocor" #>
+<#@ import namespace="EnvDTE" #>
 
 <#
 	Cocor();
@@ -56,6 +57,8 @@
 
 			Cocor(atgFile, logWriter);
 		}
+
+		owp.Activate();
 	}
 
 	// coco/r specific methods
@@ -184,6 +187,23 @@
         return templateItem;
     }
 
+	IServiceProvider __getIServiceProvider()
+	{
+		IServiceProvider hostServiceProvider = (IServiceProvider)Host;
+        if (hostServiceProvider == null)
+            throw new Exception("Host property returned unexpected value (null)");
+		return hostServiceProvider;
+	}
+
+	EnvDTE.DTE __getDte()
+	{
+		EnvDTE.DTE dte = (EnvDTE.DTE)__getIServiceProvider().GetService(typeof(EnvDTE.DTE));
+		if (dte == null)
+            throw new Exception("Unable to retrieve EnvDTE.DTE");
+		return dte;		
+	}
+
+
     EnvDTE.Project __getTemplateProject()
     {
         IServiceProvider hostServiceProvider = (IServiceProvider)Host;
@@ -243,7 +263,6 @@
         return vsProject;
     }
 
-
 	EnvDTE.OutputWindowPane GetOutputWindowPane(string paneName)
 	{
 		var dte = __getTemplateProjectItem().DTE;
@@ -269,5 +288,5 @@
 
             return OWp;
 	}
-
+	
 #>

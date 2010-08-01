@@ -1,0 +1,82 @@
+﻿// This is the 1st line.
+/* The first line above can be used to determine the namespace.
+ * If Nothing is or invalid namespace grammar is specified, it will
+ * use the default namespace, which is the ProjectName.Folder.SubFolder
+ * and so on...
+ * To use no namespace at all, please replace the 1st line with
+ * // namespace=
+ * To use custom namespace, please replace the 1st line with
+ * // namespace = MyCustomNameSpace.Example
+ * where MyCustomNameSpace.Example is your own custom namespace.
+ * Note: This must be in you 1st line otherwise it will not be valid,
+ * and must start with // comment, /* */ comment doesn't work.
+ */
+ 
+// 'using some.namespace;' must be placed here above the COMPILER directive.
+
+COMPILER Calculator
+
+// Place your custom functions or variables here.
+// The contents will be placed in your parser class.
+
+public double Result = 0.0;
+    
+CHARACTERS
+    
+//Place your characters here.
+    digit = '0'..'9'.
+    tab = '\t'.
+    
+     
+TOKENS 
+
+//Place your tokens here.
+    number = digit {digit}
+            | '.' digit {digit}
+            | digit {digit} '.' digit {digit}.  
+    Add = '+'.
+    Sub = '-'.
+    Mul = '*'.
+    Div = '/'.
+
+IGNORE tab
+
+PRODUCTIONS
+
+// Place your EBNF productions here
+
+/*
+    Calculator = Expression.    
+    Expression = Term { '+' Term | '-' Term }.
+    Term = Factor { '*' Factor | '/' Factor }.
+    Factor = number.
+*/
+
+Calculator
+=
+    Expression<out Result>.
+ 
+Expression<out double val>
+=
+    Term<out val>
+    {                               (. double val2; .)
+        ('+' Term<out val2>         (. val = val + val2; .)
+        | '-' Term<out val2>        (. val = val - val2; .)
+        )
+    }.
+
+Term<out double val>
+=
+    Factor<out val>
+    {                               (. double val2; .)
+        ('*' Factor <out val2>      (. val = val * val2; .)
+        | '/' Factor<out val2>      (. val = val / val2; .)
+        )
+    }.
+    
+Factor<out double val>
+=
+    number                  (. val = Double.Parse(t.val); .)
+    .
+
+END Calculator.
