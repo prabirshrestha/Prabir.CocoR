@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="BinDir">
+            <Component Id="Component_Prabir.Cocor.VisualStudio.tlb" Guid="D012AC1F-E855-4A92-954A-02AAA4B79914">
+                <File Id="Prabir.Cocor.VisualStudio.tlb" KeyPath="yes" Source="msi\bin\Prabir.Cocor.VisualStudio.tlb">
+                    <TypeLib Id="{33DC6BD9-B0D0-3258-BBFA-B4B9E108A20C}" Description="Prabir's Coco/R Addin For Visual Studio" HelpDirectory="BinDir" Language="0" MajorVersion="1" MinorVersion="6">
+                        <Interface Id="{06612FA7-DF56-3DE9-9BDE-0CD576EAFAE4}" Name="_State" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{072CED5C-2842-3137-821C-C5684C34285D}" Name="_Graph" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{1F6E2F96-EC48-3CBF-8626-156295DA3051}" Name="_CocorCustomTool" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{2204A61B-5E23-3B3E-8E80-04B1F7C4265E}" Name="_CocorInstaller" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{3BE9D61F-D0C9-33D2-AA3C-55FC7F06909F}" Name="_Comment" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{3C059F17-2FBD-36DC-8F33-36FFD08CA7DC}" Name="_Sets" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{3D1A25FB-73BC-39EB-A2B9-88A639538756}" Name="_UTF8Buffer" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{550F8C47-C701-364C-9887-C26FE6BE002D}" Name="_OutputWindowPane" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{58FC88D4-F191-3637-98D9-F7AEC416F2D9}" Name="_BaseCodeGeneratorWithSite" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{5AF69E10-7EFB-3D0F-8BF2-C435F1EC4C64}" Name="_BaseVsFileGenerator" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{5EDCDCE2-2685-329E-8C18-AC9BEF8DC11A}" Name="_BaseCodeGenerator" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{651F34C8-3A6A-3875-96C6-08FA0D9A8DE8}" Name="_ParserGen" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{6C88E82A-25EC-3501-839B-3659744C47A5}" Name="_Parser" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{73C620FB-F7CC-39FC-8383-097179559D05}" Name="_CharSet" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{7FE59E18-D891-31C1-BE0F-2970BF0E9927}" Name="_FatalError" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{81000852-C699-3AAA-82BB-9995FCD6C5F5}" Name="_Buffer" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{95A3797E-4B7E-37D9-9DEA-266C801AF4DC}" Name="_ServiceProvider" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{9B8B72CE-DE25-3148-A291-D9B3C3809D2F}" Name="IVsFile" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{9FAF647B-A1D0-3E6C-AC8B-33B1F3DBA960}" Name="_Scanner" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{A3056A52-3ACF-36EA-A4C1-C94FD1B15775}" Name="_Symbol" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{AFA0AABA-222F-3541-A92A-AF8C59B9D804}" Name="_CocorConsoleTextWriter" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{BEF521D1-650A-36AE-85FB-CE8B56FF5CC9}" Name="_DFA" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{C4D9ADEC-52D2-37D9-8770-71FF4F42BAD9}" Name="_Target" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{C7807F49-20B0-3C5F-801C-F4F773329C7B}" Name="_CocorGenerator" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{D0F650C9-56C3-3F84-A571-76E9C34097F4}" Name="_Token" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{D9DD694C-0BFD-3C2B-95F7-640BB31BFE3B}" Name="_Errors" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{DC214334-0B8E-3C21-9828-391C15CA8401}" Name="_Position" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{E45EDC42-54FF-31D4-9E3D-F0872FAA7E74}" Name="_VsFileTextGenerator" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{EB91ED71-B801-3B8F-AA98-04142F1B8834}" Name="_Tab" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{EDF41125-F50F-35D7-820F-B8BE6877D474}" Name="_VsFileInclude" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{EDFC59DF-6AFA-302F-BCC4-24A634A1663E}" Name="_CharClass" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{F68B4075-4EA1-3E4F-9E49-D767A3662E5A}" Name="_Action" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{FAA52369-F191-39B3-9E16-B1551DF34928}" Name="_CocorVsOutputWindowPaneTextWriter" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{FD489BBD-1E21-3E82-B61E-002236EBDB92}" Name="_Range" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{FD822689-93C7-3CCA-997C-698689E51D59}" Name="_Melted" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                        <Interface Id="{FE3C0326-4FBA-3B15-9898-86291C9370A8}" Name="_Node" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}" />
+                    </TypeLib>
+                </File>
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+</Wix>

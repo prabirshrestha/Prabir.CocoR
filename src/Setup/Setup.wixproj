@@ -21,6 +21,8 @@
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cocor_vs_dll.wxs" />
+    <Compile Include="cocor_vs_tlb.wxs" />
     <Compile Include="Product.wxs" />
     <Compile Include="Product.Generated.wxs">
       <DependentUpon>Product.wxs</DependentUpon>
@@ -45,6 +47,7 @@
     <Content Include="msi\bin\cocor.pdb" />
     <Content Include="msi\bin\Parser.frame" />
     <Content Include="msi\bin\Prabir.Cocor.VisualStudio.dll" />
+    <Content Include="msi\bin\Prabir.Cocor.VisualStudio.tlb" />
     <Content Include="msi\bin\Scanner.frame" />
     <Content Include="msi\docs\DataStructures.pdf" />
     <Content Include="msi\docs\UserManual.pdf" />
@@ -54,6 +57,7 @@
     <Content Include="msi\samples\CSharp3.atg" />
     <Content Include="msi\samples\CSParser.cs" />
     <Content Include="msi\samples\Taste.zip" />
+    <Content Include="tlb.bat" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="msi" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:complus="http://schemas.microsoft.com/wix/ComPlusExtension">
   <Product
         Id="1DC26809-8FB3-4935-A954-DD97113B021D"
         Name="Prabir's Coco/R for C#"
@@ -90,6 +90,8 @@
       <Feature Id="CocoRFeature" AllowAdvertise="no"  Title="Prabir's Coco/R" Absent="allow"  Description="Coco/R" Level="1" Display="expand">
         <Feature Absent="disallow"  AllowAdvertise="no" Id="CocoRExeFeature" Title="Binaries" Description="Prabir's Coco/R Binary" Level="1">
           <ComponentRef Id="Component_PrabirCocorBin"/>
+          <ComponentRef Id="Component_Prabir.Cocor.VisualStudio.dll"/>
+          <ComponentRef Id="Component_Prabir.Cocor.VisualStudio.tlb"/>
         </Feature>
       </Feature>
 
@@ -120,11 +122,11 @@
 
     <CustomAction Id="SetREINSTALL" Property="REINSTALL" Value="CocorVisualStudioFeature" />
 
-    <InstallExecuteSequence>
+    <!--<InstallExecuteSequence>
       <Custom Action="SetREINSTALL" Before="CostInitialize">
         Installed AND NOT (REMOVE ~= "ALL")
       </Custom>
-    </InstallExecuteSequence>
+    </InstallExecuteSequence>-->
 
     <UIRef Id="Cocor_WixUI_Mondo" />
 

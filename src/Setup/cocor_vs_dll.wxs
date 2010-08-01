@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="BinDir">
+            <Component Id="Component_Prabir.Cocor.VisualStudio.dll" Guid="0E96FD77-2B19-4271-BB3D-FF5DD1ABBB69">
+                <Class Id="{097B5D3C-B6AA-3A63-AB28-026C28876381}" Context="InprocServer32" Description="Prabir.VisualStudio.CustomTool.VsFileInclude" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="Prabir.VisualStudio.CustomTool.VsFileInclude" Description="Prabir.VisualStudio.CustomTool.VsFileInclude" />
+                </Class>
+                <Class Id="{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}" Context="InprocServer32" Description="at.jku.ssw.Coco.Sets" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="at.jku.ssw.Coco.Sets" Description="at.jku.ssw.Coco.Sets" />
+                </Class>
+                <Class Id="{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}" Context="InprocServer32" Description="at.jku.ssw.Coco.Token" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="at.jku.ssw.Coco.Token" Description="at.jku.ssw.Coco.Token" />
+                </Class>
+                <Class Id="{4B4363D2-5F84-3A19-8742-F972675DD835}" Context="InprocServer32" Description="at.jku.ssw.Coco.State" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="at.jku.ssw.Coco.State" Description="at.jku.ssw.Coco.State" />
+                </Class>
+                <Class Id="{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}" Context="InprocServer32" Description="Prabir.Cocor.VisualStudio.CocorInstaller" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="Prabir.Cocor.VisualStudio.CocorInstaller" Description="Prabir.Cocor.VisualStudio.CocorInstaller" />
+                </Class>
+                <Class Id="{6D683ABC-2287-384C-805B-9A402077ACC9}" Context="InprocServer32" Description="at.jku.ssw.Coco.Graph" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="at.jku.ssw.Coco.Graph" Description="at.jku.ssw.Coco.Graph" />
+                </Class>
+                <Class Id="{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}" Context="InprocServer32" Description="Prabir.Cocor.CocorConsoleTextWriter" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="Prabir.Cocor.CocorConsoleTextWriter" Description="Prabir.Cocor.CocorConsoleTextWriter" />
+                </Class>
+                <Class Id="{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}" Context="InprocServer32" Description="at.jku.ssw.Coco.Errors" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="at.jku.ssw.Coco.Errors" Description="at.jku.ssw.Coco.Errors" />
+                </Class>
+                <Class Id="{98D09EFF-5894-3441-846C-93DF4FBE64F6}" Context="InprocServer32" Description="Prabir.Cocor.CocorGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="Prabir.Cocor.CocorGenerator" Description="Prabir.Cocor.CocorGenerator" />
+                </Class>
+                <Class Id="{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}" Context="InprocServer32" Description="Prabir.VisualStudio.CustomTool.VsFileTextGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="Prabir.VisualStudio.CustomTool.VsFileTextGenerator" Description="Prabir.VisualStudio.CustomTool.VsFileTextGenerator" />
+                </Class>
+                <Class Id="{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}" Context="InprocServer32" Description="at.jku.ssw.Coco.CharSet" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="at.jku.ssw.Coco.CharSet" Description="at.jku.ssw.Coco.CharSet" />
+                </Class>
+                <Class Id="{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}" Context="InprocServer32" Description="Prabir.Cocor.VisualStudio.CocorCustomTool" ThreadingModel="both" ForeignServer="mscoree.dll">
+                    <ProgId Id="Prabir.Cocor.VisualStudio.CocorCustomTool" Description="Prabir.Cocor.VisualStudio.CocorCustomTool" />
+                </Class>
+                <File Id="Prabir.Cocor.VisualStudio.dll" KeyPath="yes" Source="msi\bin\Prabir.Cocor.VisualStudio.dll" Assembly=".net" />
+                <ProgId Id="Record" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32\1.6.1731.11658" Name="Class" Value="Prabir.VisualStudio.CustomTool.VsFileInclude" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32" Name="Class" Value="Prabir.VisualStudio.CustomTool.VsFileInclude" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{097B5D3C-B6AA-3A63-AB28-026C28876381}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32\1.6.1731.11658" Name="Class" Value="at.jku.ssw.Coco.Sets" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32" Name="Class" Value="at.jku.ssw.Coco.Sets" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{0EEBC23C-EA6F-3F17-9A55-67FE8AF05C81}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32\1.6.1731.11658" Name="Class" Value="at.jku.ssw.Coco.Token" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32" Name="Class" Value="at.jku.ssw.Coco.Token" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{2739760D-D135-3F0E-8F59-ACD2DF7A2D01}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32\1.6.1731.11658" Name="Class" Value="at.jku.ssw.Coco.State" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32" Name="Class" Value="at.jku.ssw.Coco.State" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{4B4363D2-5F84-3A19-8742-F972675DD835}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32\1.6.1731.11658" Name="Class" Value="Prabir.Cocor.VisualStudio.CocorInstaller" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32" Name="Class" Value="Prabir.Cocor.VisualStudio.CocorInstaller" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{693FB0E7-CA10-370C-A011-A3F8CD0EDAE7}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32\1.6.1731.11658" Name="Class" Value="at.jku.ssw.Coco.Graph" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32" Name="Class" Value="at.jku.ssw.Coco.Graph" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{6D683ABC-2287-384C-805B-9A402077ACC9}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32\1.6.1731.11658" Name="Class" Value="Prabir.Cocor.CocorConsoleTextWriter" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32" Name="Class" Value="Prabir.Cocor.CocorConsoleTextWriter" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{8BB6C8FB-FC5C-3355-8085-EA7FC0FE97AA}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32\1.6.1731.11658" Name="Class" Value="at.jku.ssw.Coco.Errors" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32" Name="Class" Value="at.jku.ssw.Coco.Errors" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98AAEFC9-02E9-383C-9455-7FB1B6D69FB8}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32\1.6.1731.11658" Name="Class" Value="Prabir.Cocor.CocorGenerator" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32" Name="Class" Value="Prabir.Cocor.CocorGenerator" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{98D09EFF-5894-3441-846C-93DF4FBE64F6}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32\1.6.1731.11658" Name="Class" Value="Prabir.VisualStudio.CustomTool.VsFileTextGenerator" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32" Name="Class" Value="Prabir.VisualStudio.CustomTool.VsFileTextGenerator" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{AB1F6CC6-2A39-3441-B3E9-CC6B176ECABE}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32\1.6.1731.11658" Name="Class" Value="at.jku.ssw.Coco.CharSet" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32" Name="Class" Value="at.jku.ssw.Coco.CharSet" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{C5A28F7F-32E6-30A1-9B63-1251FB3A38A8}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32\1.6.1731.11658" Name="Class" Value="Prabir.Cocor.VisualStudio.CocorCustomTool" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32" Name="Class" Value="Prabir.Cocor.VisualStudio.CocorCustomTool" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="CLSID\{FC6E643B-F4A3-4C13-99F1-33F6BE0FF31F}\InprocServer32" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="Component Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Name="0" Value=".NET Category" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="Record\{E1CEBECD-4E97-38B1-AF4F-7D9790997062}\1.6.1731.11658" Name="Class" Value="Prabir.Cocor.CocorGenerator+CocorProvider" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="Record\{E1CEBECD-4E97-38B1-AF4F-7D9790997062}\1.6.1731.11658" Name="Assembly" Value="Prabir.Cocor.VisualStudio, Version=1.6.1731.11658, Culture=neutral, PublicKeyToken=3c8ba0b6840b8c1c" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="Record\{E1CEBECD-4E97-38B1-AF4F-7D9790997062}\1.6.1731.11658" Name="RuntimeVersion" Value="v2.0.50727" Type="string" Action="write" />
+                <RegistryValue Root="HKCR" Key="Record\{E1CEBECD-4E97-38B1-AF4F-7D9790997062}\1.6.1731.11658" Name="CodeBase" Value="file:///[#Prabir.Cocor.VisualStudio.dll]" Type="string" Action="write" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+</Wix>
